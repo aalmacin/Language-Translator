@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface Translator {
-    String translateText(String text);
+    List<String> translateText(String text, String lang);
 }

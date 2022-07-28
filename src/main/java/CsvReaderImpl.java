@@ -25,10 +25,10 @@ public class CsvReaderImpl implements CsvReader<List<Tuple<String, String>>> {
             while ((nextRecord = csvReader.readNext()) != null) {
                 String x;
                 String y = null;
-                if (nextRecord.length == 1) {
+                if (nextRecord.length == 2) {
                     x = nextRecord[0];
                     y = nextRecord[1];
-                } else if (nextRecord.length == 0) {
+                } else if (nextRecord.length == 1) {
                     x = nextRecord[0];
                 } else {
                     throw new RuntimeException("CSV columns are more than needed");
