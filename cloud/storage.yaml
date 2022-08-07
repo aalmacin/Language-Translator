@@ -2,4 +2,8 @@ resources:
   - name: audios-bucket
     type: storage.v1.bucket
     properties:
-      
+      name: audios-bucket
+      location: us-central1
+      for
+      versioning:
+        enabled: False

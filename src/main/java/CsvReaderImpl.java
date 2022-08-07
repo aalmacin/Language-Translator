@@ -14,7 +14,7 @@ public class CsvReaderImpl implements CsvReader<List<Tuple<String, String>>> {
         try {
             fileReader = new FileReader(fileName);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Failed to read file", e);
+            throw new RuntimeException(String.format("Failed to read file: %s", fileName), e);
         }
 
         CSVReader csvReader = new CSVReader(fileReader);

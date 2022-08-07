@@ -1,3 +1,3 @@
 public interface TextToSpeechAudioGenerator {
-    String generateAudio(String text);
+    byte[] generateAudio(String text);
 }

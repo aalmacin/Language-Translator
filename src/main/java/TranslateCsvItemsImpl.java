@@ -1,7 +1,6 @@
 import com.google.cloud.Tuple;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -18,8 +17,8 @@ public class TranslateCsvItemsImpl implements TranslateCsvItems {
                 item -> {
                     if (isBlank(item.y())) {
                         String newY = translator.translateText(item.x(), lang).stream().reduce(
-                                null,
-                                (a, i) -> a + "<br>" + i
+                                "",
+                                (a, i) -> a != null ? a + "<br>" + i : ""
                         );
                         return Tuple.of(item.x(), newY);
                     }
