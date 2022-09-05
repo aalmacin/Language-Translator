@@ -26,7 +26,7 @@ public class Main {
         final AnkiWriter ankiWriter = new AnkiWriterImpl(outputFilename);
         final TranslationFormatter translationFormatter = new TranslationFormatterImpl();
 
-        final List<Tuple<String, String>> items = csvReader.readCsv(inputFilename);
+        final List<Tuple<String, String>> items = csvReader.readCsv(inputFilename, '\t');
         final List<Tuple<String, String>> translatedItems = translateCsvItems.translate(items, language);
         translatedItems.forEach(item -> {
             final String toBeTranslated = item.x();

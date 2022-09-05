@@ -10,6 +10,11 @@ import java.util.List;
 public class CsvReaderImpl implements CsvReader<List<Tuple<String, String>>> {
     @Override
     public List<Tuple<String, String>> readCsv(String fileName) {
+        return readCsv(fileName, ',');
+    }
+
+    @Override
+    public List<Tuple<String, String>> readCsv(String fileName, char separator) {
         FileReader fileReader;
         try {
             fileReader = new FileReader(fileName);
@@ -17,7 +22,7 @@ public class CsvReaderImpl implements CsvReader<List<Tuple<String, String>>> {
             throw new RuntimeException(String.format("Failed to read file: %s", fileName), e);
         }
 
-        CSVReader csvReader = new CSVReader(fileReader);
+        CSVReader csvReader = new CSVReader(fileReader, separator);
         String[] nextRecord;
 
         List<Tuple<String, String>> items = new ArrayList<>();
