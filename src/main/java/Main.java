@@ -15,6 +15,7 @@ public class Main {
         // Example
 //        String language = "en";
         final String language = args[2];
+        final String format = args[3];
 
         final CsvReader<List<Tuple<String, String>>> csvReader = new CsvReaderImpl();
         final TranslateCsvItems translateCsvItems = new TranslateCsvItemsImpl();
@@ -24,7 +25,9 @@ public class Main {
         final AudioFileStorage audioFileStorage = new AudioFileStorageImpl();
         final AudioFileChecker audioFileChecker = new AudioFileCheckerImpl();
         final AnkiWriter ankiWriter = new AnkiWriterImpl(outputFilename);
-        final TranslationFormatter translationFormatter = new TranslationFormatterImpl();
+
+        final TranslationFormatter translationFormatter = getFormatter(format);
+
 
         final List<Tuple<String, String>> items = csvReader.readCsv(inputFilename, '\t');
         final List<Tuple<String, String>> translatedItems = translateCsvItems.translate(items, language);
@@ -44,5 +47,14 @@ public class Main {
                 throw new RuntimeException(String.format("Failed to write to anki %s", translateText));
             }
         });
+    }
+
+    private static TranslationFormatter getFormatter(String format) {
+        switch (format) {
+            case "cloze":
+                return new ClozeTranslationFormatterImpl();
+            default:
+                return new BasicTranslationFormatterImpl();
+        }
     }
 }
