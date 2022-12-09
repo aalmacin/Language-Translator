@@ -25,3 +25,4 @@ translate-raidrin-a7bf037c073c.json
 *.txt
 
 audio/*.mp3
+.DS_Store

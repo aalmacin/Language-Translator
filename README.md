@@ -14,3 +14,15 @@ Audios bucket was created by running
 ```
 gcloud deployment-manager deployments create --config=./storage.yml language-translator
 ```
+
+## Example Commands
+
+### Normal
+```shell
+./gradlew exec --args="Health.tsv Health-result.tsv en"
+```
+
+### Cloze
+```shell
+./gradlew exec --args="a.tsv a-out.tsv en cloze"
+```
