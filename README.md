@@ -26,3 +26,8 @@ gcloud deployment-manager deployments create --config=./storage.yml language-tra
 ```shell
 ./gradlew exec --args="a.tsv a-out.tsv en cloze"
 ```
+
+## Moving to Anki
+```shell
+cp audio/* ~/Library/Application\ Support/Anki2/[Account]/collection.media
+```

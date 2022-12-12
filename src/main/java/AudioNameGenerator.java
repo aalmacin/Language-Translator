@@ -1,10 +1,10 @@
-import java.util.Base64;
+import com.google.common.hash.Hashing;
+
+import java.nio.charset.StandardCharsets;
 
 public class AudioNameGenerator {
     public String generate(String str) {
-        return Base64.getEncoder().encodeToString(str.getBytes())
-                .replace('/', '_')
-                .replace('+', '-')
-                + ".mp3";
+        return Hashing.sha256()
+                .hashString(str, StandardCharsets.UTF_8) + ".mp3";
     }
 }

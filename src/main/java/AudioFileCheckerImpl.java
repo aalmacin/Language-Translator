@@ -1,6 +1,9 @@
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class AudioFileCheckerImpl implements AudioFileChecker {
     @Override
     public boolean exists(String fileName) {
-        return false;
+        return Files.exists(Path.of(fileName));
     }
 }
